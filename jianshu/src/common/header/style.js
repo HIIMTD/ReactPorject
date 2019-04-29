@@ -50,6 +50,26 @@ color:#333;
 
 ` ;
 
+export const SearchWrapper = styled.div`
+    position:relative;
+  
+    float:left;
+    .slide-enter{
+   
+        transition:all .2s ease-out
+    }
+    .slide-enter-active{
+        width:240px;
+    }
+
+    .slide-exit{
+        transition:all .2s ease-out
+    }
+    
+    .slide-exit-active{
+        width:160px;
+    }
+` ;
 
 export const NavSearch = styled.input.attrs({
     placeholder:'search'
