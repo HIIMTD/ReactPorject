@@ -1,64 +1,69 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWrapper,SearchInfo,SearchInfoTitle,SearchInfoSwitch,SearchInfoItem,SearchInfoList } from './style';
+import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWrapper, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, SearchInfoList } from './style';
 import { connect } from 'react-redux';
-import {actionCreators} from './store';
+import { actionCreators } from './store';
 
-const getListArea = (show)=>{
-    if(show){
-        return (
-            <SearchInfo>
-            <SearchInfoTitle>
-                What's popular
-                <SearchInfoSwitch>
-                    switch
-                </SearchInfoSwitch>
-            </SearchInfoTitle>
-            <SearchInfoList>
-                <SearchInfoItem>Ottawa</SearchInfoItem>
-                <SearchInfoItem>Ottawa</SearchInfoItem>
-                <SearchInfoItem>Ottawa</SearchInfoItem>
-                <SearchInfoItem>Ottawa</SearchInfoItem>
-            </SearchInfoList>
-        </SearchInfo>
-        )
-    }else{
-        return null;
+
+class Header extends Component {
+
+    getListArea(show) {
+        if (show) {
+            return (
+                <SearchInfo>
+                    <SearchInfoTitle>
+                        What's popular
+                    <SearchInfoSwitch>
+                            switch
+                    </SearchInfoSwitch>
+                    </SearchInfoTitle>
+                    <SearchInfoList>
+                        <SearchInfoItem>Ottawa</SearchInfoItem>
+                        <SearchInfoItem>Ottawa</SearchInfoItem>
+                        <SearchInfoItem>Ottawa</SearchInfoItem>
+                        <SearchInfoItem>Ottawa</SearchInfoItem>
+                    </SearchInfoList>
+                </SearchInfo>
+            )
+        } else {
+            return null;
+        }
     }
-}
 
 
-const Header = (props) => {
-    return (
-        <HeaderWrapper>
-            <Logo href='/' />
-            <Nav>
-                <NavItem className='left active'>Home</NavItem>
-                <NavItem className='left'>Search friend:</NavItem>
-                <NavItem className='right'>Log in</NavItem>
-                <NavItem className='right'>French</NavItem>
-                <SearchWrapper>
-                    <CSSTransition
-                        in={props.focused}
-                        timeout={200}
-                        classNames="slide"
-                    >
-                        <NavSearch
-                            className={props.focused ? 'focused' : ''}
-                            onFocus={props.handleInputFocus}
-                            onBlur={props.handleInputBlur}
+    render() {
+        return (
+            <HeaderWrapper>
+                <Logo href='/' />
+                <Nav>
+                    <NavItem className='left active'>Home</NavItem>
+                    <NavItem className='left'>Search friend:</NavItem>
+                    <NavItem className='right'>Log in</NavItem>
+                    <NavItem className='right'>French</NavItem>
+                    <SearchWrapper>
+                        <CSSTransition
+                            in={this.props.focused}
+                            timeout={200}
+                            classNames="slide"
                         >
-                        </NavSearch>
-                    </CSSTransition>
-                    {getListArea(props.focused)}
-                </SearchWrapper>
-            </Nav>
-            <Addition>
-                <Button className='writting'>write</Button>
-                <Button className='reg'>Register</Button>
-            </Addition>
-        </HeaderWrapper>
-    )
+                            <NavSearch
+                                className={this.props.focused ? 'focused' : ''}
+                                onFocus={this.props.handleInputFocus}
+                                onBlur={this.props.handleInputBlur}
+                            >
+                            </NavSearch>
+                        </CSSTransition>
+                        {this.getListArea(this.props.focused)}
+                    </SearchWrapper>
+                </Nav>
+                <Addition>
+                    <Button className='writting'>write</Button>
+                    <Button className='reg'>Register</Button>
+                </Addition>
+            </HeaderWrapper>
+        )
+
+    }
 }
 
 
@@ -66,7 +71,7 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        focused:  state.getIn(['header','focused'])
+        focused: state.getIn(['header', 'focused'])
         // state.get('header').get('focused')
     }
 }
@@ -74,6 +79,7 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
     return {
         handleInputFocus() {
+            dispatch(actionCreators.getList());
             dispatch(actionCreators.searchFocus());
         },
 
