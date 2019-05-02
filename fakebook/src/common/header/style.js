@@ -15,6 +15,7 @@ position:absolute;
 top:0;
 left:0;
 display:block;
+margin-left:20px;
 width:100px;
 height:56px;
 background:url(${logoPic});
@@ -45,7 +46,7 @@ color:#333;
 }
 
 &.active{
-    color:#ea6f5a;
+    color:#0099ff;
 }
 
 ` ;
@@ -58,7 +59,7 @@ export const SearchWrapper = styled.div`
 ` ;
 
 export const NavSearch = styled.input.attrs({
-    placeholder:'search'
+    placeholder:'name/city...'
 })` 
     width:160px;
     height:38px;
@@ -67,7 +68,7 @@ export const NavSearch = styled.input.attrs({
     border-radius:19px;
     background:#eee;
     margin-top:9px;
-    margin-left:20px;
+    margin-left:0;
     padding:0 30px 0 20px;
     box-sizing:border-box;
     font-size:14px;
@@ -109,16 +110,16 @@ float:right;
 line-height:38px;
 border-radius:19px;
 margin-top:9px;
-border:1px solid #ec6149;
+border:1px solid #0099ff;
 margin-right:20px;
 padding:0 20px;
 font-size:14px;
 &.reg{
-    color:#ec6149;
+    color:#0099ff;
 }
 
 &.writting{
     color:#fff;
-    background:#ec6149;
+    background:#0099ff;
 }
 ` ;
