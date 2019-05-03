@@ -21,5 +21,9 @@ export default(state = defaultState, action)=>{
         //     focused:false
         // }
     }
+
+    if (action.type === constants.CHANGE_LIST) {
+        return state.set('list',action.data);
+    }
     return state;
 }
