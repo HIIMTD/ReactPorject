@@ -2,17 +2,26 @@ import React, { Component } from 'react';
 import { GlobalStyle } from './style.js'
 import Header from './common/header';
 import store from './store/index';
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-      <fragment>
+      <div>
         <GlobalStyle />
-        <Provider store = {store}>
-          <Header />
+        <Provider store={store}>
+          <div>
+            <Header />
+            <BrowserRouter>
+              <div>
+                <Route path='/' exact render={() => <div>home</div>}></Route>
+                <Route path='/detail' exact render={() => <div>detail</div>}></Route>
+              </div>
+            </BrowserRouter>
+          </div>
         </Provider>
-      </fragment>
+      </div>
     );
   }
 }
