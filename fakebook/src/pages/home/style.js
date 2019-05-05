@@ -63,7 +63,7 @@ export const ListItem = styled.div`
     .pic{
         display:block;
         width:125px;
-        height:100px;
+        height:140px;
         float:right;
     }
 `;
@@ -81,7 +81,7 @@ export const ListInfo = styled.div`
     .desc{
         font-size:13px;
         line-height:24px;
-        color:#999;
+        color:black;
     }
 `;
 
