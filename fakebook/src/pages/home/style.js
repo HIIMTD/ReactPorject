@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+
 export const HomeWrapper = styled.div`
     width:960px;
     margin:0 auto;
     overflow:hidden;
     // background:red;
+    background:white;
 `;
 
 export const HomeLeft = styled.div`
@@ -21,7 +23,7 @@ export const HomeLeft = styled.div`
 
 
 export const HomeRight = styled.div`
-    width:240px;
+    width:280px;
     float:right;
 
 `;
@@ -85,3 +87,25 @@ export const ListInfo = styled.div`
     }
 `;
 
+
+
+export const RecommendWrapper = styled.div`
+    margin:30px 0;
+    width:280px;
+    .p{
+        font-size:28px;
+        font-weight:bold;
+    }
+`;
+
+export const RecommendItem = styled.div`
+    width:280px;
+    height:70px;
+    background:url(${(props) => props.imgUrl});
+    // background-size:contain;
+    .pic{
+        margin-top:10px;
+        width:280;
+        height:90;
+    }
+`;

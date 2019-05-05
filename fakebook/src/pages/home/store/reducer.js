@@ -11,6 +11,11 @@ import linkin from '../../../statics/linkin.png'
 import ironman from '../../../statics/ironman.png'
 import avengers from '../../../statics/avengers.png'
 import timeloop from '../../../statics/timeloop.png'
+import suggest1 from '../../../statics/suggest1.png';
+import suggest2 from '../../../statics/suggest2.png';
+import suggest3 from '../../../statics/suggest3.png';
+import suggest4 from '../../../statics/suggest4.png';
+import suggest5 from '../../../statics/suggest5.png';
 
 const defaultState = fromJS({
     topicList:[{
@@ -64,6 +69,22 @@ const defaultState = fromJS({
         title: "Does time loop exist?",
         desc: "A time loop or temporal loop is a plot device in which periods of time are repeated and re-experienced by the characters, and there is often some hope of breaking out of the cycle of repetition...",
         imgUrl:timeloop
+    }],
+    recommendList:[{
+        id:1,
+        imgUrl:suggest1
+    },{
+        id:2,
+        imgUrl:suggest2
+    },{
+        id:3,
+        imgUrl:suggest3
+    },{
+        id:4,
+        imgUrl:suggest4
+    },{
+        id:5,
+        imgUrl:suggest5
     }]
     
 });
