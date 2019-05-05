@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HomeWrapper, HomeLeft, HomeRight } from './style';
-import Topic from './component/Topics'
+import Topic from './component/Topic'
 import Writer from './component/Writer'
 import Recommend from './component/Recommend'
 import List from './component/List'
