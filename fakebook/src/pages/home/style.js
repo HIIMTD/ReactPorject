@@ -101,7 +101,6 @@ export const RecommendWrapper = styled.div`
 export const RecommendItem = styled.div`
     width:280px;
     height:70px;
-    background:url(${(props) => props.imgUrl});
     // background-size:contain;
     .pic{
         margin-top:10px;
@@ -109,3 +108,27 @@ export const RecommendItem = styled.div`
         height:90;
     }
 `;
+
+
+export const WriterWrapper = styled.div`
+    width:277px;
+    // border:1px solid #dcdcdc;
+    // border-radius:3px;
+    height:300px;
+
+`;
+
+export const WriterItem = styled.div`
+    .p{
+        font-size:30px;
+        // background:green;
+        margin-bottom:20px;
+
+    }
+    .text{
+        width:250px;
+        height:200px;
+        font-size:20px;
+    }
+`;
+
