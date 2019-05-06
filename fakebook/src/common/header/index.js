@@ -3,6 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWrapper, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, SearchInfoList } from './style';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
+import {Link} from 'react-router-dom';
 
 
 class Header extends Component {
@@ -48,7 +49,9 @@ class Header extends Component {
         const {focused,handleInputFocus,handleInputBlur,list} = this.props;
         return (
             <HeaderWrapper>
-                <Logo href='/' />
+                <Link to='/'>
+                <Logo  />
+                </Link>
                 <Nav>
                     <NavItem className='left active'>Home</NavItem>
                     <NavItem className='left'>Search friend:</NavItem>

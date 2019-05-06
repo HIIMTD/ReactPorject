@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { HomeWrapper, HomeLeft, HomeRight } from './style';
 import Topic from './component/Topic'
 import Writer from './component/Writer'
@@ -6,12 +6,14 @@ import Recommend from './component/Recommend'
 import List from './component/List'
 import {BackTop} from './style'
 
-class Home extends Component {
+class Home extends PureComponent {
+
+
 
     handleScrollTop(){
         window.scrollTo(0,0);
     }
-    
+
     render() {
         return (
             <HomeWrapper>
