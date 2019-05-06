@@ -4,7 +4,7 @@ import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchW
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
 import {Link} from 'react-router-dom';
-
+import {actionCreators as loginActionCreators} from '../../pages/login/store'
 
 class Header extends Component {
 
@@ -46,7 +46,7 @@ class Header extends Component {
 
 
     render() {
-        const {focused,handleInputFocus,handleInputBlur,list,login} = this.props;
+        const {focused,handleInputFocus,handleInputBlur,list,login,logout} = this.props;
         return (
             <HeaderWrapper>
                 <Link to='/'>
@@ -57,7 +57,7 @@ class Header extends Component {
                     <NavItem className='left'>Search friend:</NavItem>
                     {
                         login ? 
-                        <NavItem className = 'right'>Log out</NavItem>:
+                        <NavItem onClick = {logout} className = 'right'>Log out</NavItem>:
                         <Link to = '/login'><NavItem className = 'right'>Log in</NavItem></Link>
                     }
                     <NavItem className='right'>French</NavItem>
@@ -129,6 +129,9 @@ const mapDispathToProps = (dispatch) => {
             }else{
                 dispatch(actionCreators.changePage(1));
             }
+        },
+        logout(){
+            dispatch(loginActionCreators.logout())
         }
     }
 }
