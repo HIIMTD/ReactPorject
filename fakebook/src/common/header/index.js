@@ -46,7 +46,7 @@ class Header extends Component {
 
 
     render() {
-        const {focused,handleInputFocus,handleInputBlur,list} = this.props;
+        const {focused,handleInputFocus,handleInputBlur,list,login} = this.props;
         return (
             <HeaderWrapper>
                 <Link to='/'>
@@ -55,7 +55,11 @@ class Header extends Component {
                 <Nav>
                     <NavItem className='left active'>Home</NavItem>
                     <NavItem className='left'>Search friend:</NavItem>
-                    <NavItem className='right'>Log in</NavItem>
+                    {
+                        login ? 
+                        <NavItem className = 'right'>Log out</NavItem>:
+                        <Link to = '/login'><NavItem className = 'right'>Log in</NavItem></Link>
+                    }
                     <NavItem className='right'>French</NavItem>
                     <SearchWrapper>
                         <CSSTransition
@@ -94,6 +98,7 @@ const mapStateToProps = (state) => {
         page:state.getIn(['header','page']),
         mouseIn: state.getIn(['header','mouseIn']),
         totalPage:state.getIn(['header','totalPage']),
+        login:state.getIn(['login','login'])
     }
 }
 
