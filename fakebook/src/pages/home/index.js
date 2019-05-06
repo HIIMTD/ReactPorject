@@ -4,8 +4,14 @@ import Topic from './component/Topic'
 import Writer from './component/Writer'
 import Recommend from './component/Recommend'
 import List from './component/List'
+import {BackTop} from './style'
 
 class Home extends Component {
+
+    handleScrollTop(){
+        window.scrollTo(0,0);
+    }
+    
     render() {
         return (
             <HomeWrapper>
@@ -18,9 +24,12 @@ class Home extends Component {
                     <Recommend />
                     <Writer />
                 </HomeRight>
+                <BackTop onClick = {this.handleScrollTop}>GO TOP</BackTop>
             </HomeWrapper>
         )
     }
 }
+
+
 
 export default Home;
