@@ -126,7 +126,7 @@ font-size:14px;
 ` ;
 
 export const SearchInfo = styled.div` 
-
+    z-index:1;
     position:absolute;
     left:0;
     top:56px;
