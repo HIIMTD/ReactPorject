@@ -3,39 +3,39 @@ import { CSSTransition } from 'react-transition-group';
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWrapper, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, SearchInfoList } from './style';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
-import {Link} from 'react-router-dom';
-import {actionCreators as loginActionCreators} from '../../pages/login/store'
+import { Link } from 'react-router-dom';
+import { actionCreators as loginActionCreators } from '../../pages/login/store'
 
 class Header extends Component {
 
     getListArea() {
-        const {focused,list, page,totalPage,mouseIn,handleMouseEnter,handleMouseLeave,handleChangePage} = this.props;
-        const pageList=[];
+        const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+        const pageList = [];
         const newList = list.toJS();
 
         if (newList.length) {
-            for (let i = (page-1)*5; i < page*5; i++) {
+            for (let i = (page - 1) * 5; i < page * 5; i++) {
                 pageList.push(
                     <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
                 )
-                
+
             }
         }
 
-        if (focused||mouseIn) {
+        if (focused || mouseIn) {
             return (
-                <SearchInfo 
-                onMouseEnter = {handleMouseEnter}
-                onMouseLeave = {handleMouseLeave}
+                <SearchInfo
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
                 >
                     <SearchInfoTitle>
                         What's popular
-                    <SearchInfoSwitch onClick = {()=>handleChangePage(page,totalPage)}>
+                    <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage)}>
                             switch
                     </SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoList>
-                       {pageList}
+                        {pageList}
                     </SearchInfoList>
                 </SearchInfo>
             )
@@ -46,19 +46,19 @@ class Header extends Component {
 
 
     render() {
-        const {focused,handleInputFocus,handleInputBlur,list,login,logout} = this.props;
+        const { focused, handleInputFocus, handleInputBlur, list, login, logout } = this.props;
         return (
             <HeaderWrapper>
                 <Link to='/'>
-                <Logo  />
+                    <Logo />
                 </Link>
                 <Nav>
                     <NavItem className='left active'>Home</NavItem>
                     <NavItem className='left'>Search friend:</NavItem>
                     {
-                        login ? 
-                        <NavItem onClick = {logout} className = 'right'>Log out</NavItem>:
-                        <Link to = '/login'><NavItem className = 'right'>Log in</NavItem></Link>
+                        login ?
+                            <NavItem onClick={logout} className='right'>Log out</NavItem> :
+                            <Link to='/login'><NavItem className='right'>Log in</NavItem></Link>
                     }
                     <NavItem className='right'>French</NavItem>
                     <SearchWrapper>
@@ -69,7 +69,7 @@ class Header extends Component {
                         >
                             <NavSearch
                                 className={focused ? 'focused' : ''}
-                                onFocus={()=>handleInputFocus(list)}
+                                onFocus={() => handleInputFocus(list)}
                                 onBlur={handleInputBlur}
                             >
                             </NavSearch>
@@ -78,7 +78,9 @@ class Header extends Component {
                     </SearchWrapper>
                 </Nav>
                 <Addition>
-                    <Button className='writting'>write</Button>
+                    <Link to = '/write'>
+                        <Button className='writting'>write</Button>
+                    </Link>
                     <Button className='reg'>Register</Button>
                 </Addition>
             </HeaderWrapper>
@@ -94,18 +96,18 @@ const mapStateToProps = (state) => {
     return {
         focused: state.getIn(['header', 'focused']),
         // state.get('header').get('focused')
-        list:state.getIn(['header','list']),
-        page:state.getIn(['header','page']),
-        mouseIn: state.getIn(['header','mouseIn']),
-        totalPage:state.getIn(['header','totalPage']),
-        login:state.getIn(['login','login'])
+        list: state.getIn(['header', 'list']),
+        page: state.getIn(['header', 'page']),
+        mouseIn: state.getIn(['header', 'mouseIn']),
+        totalPage: state.getIn(['header', 'totalPage']),
+        login: state.getIn(['login', 'login'])
     }
 }
 
 const mapDispathToProps = (dispatch) => {
     return {
         handleInputFocus(list) {
-            if (list.size===0) {
+            if (list.size === 0) {
                 dispatch(actionCreators.getList());
             }
             dispatch(actionCreators.searchFocus());
@@ -115,22 +117,22 @@ const mapDispathToProps = (dispatch) => {
             dispatch(actionCreators.searchBlur());
         },
 
-        handleMouseEnter(){
+        handleMouseEnter() {
             dispatch(actionCreators.mouseEnter());
         },
 
-        handleMouseLeave(){
+        handleMouseLeave() {
             dispatch(actionCreators.mouseLeave());
         },
 
-        handleChangePage(page,totalPage){
-            if (page<totalPage) {
-                dispatch(actionCreators.changePage(page+1));
-            }else{
+        handleChangePage(page, totalPage) {
+            if (page < totalPage) {
+                dispatch(actionCreators.changePage(page + 1));
+            } else {
                 dispatch(actionCreators.changePage(1));
             }
         },
-        logout(){
+        logout() {
             dispatch(loginActionCreators.logout())
         }
     }
