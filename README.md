@@ -2,3 +2,5 @@ My fakebook website is a social media website like facebook, using react with th
 features:router, axios for ajax data pass, search area hints, log in/out system,etc...
 
 Designed by De Tao(Kevin)
+
+![fakebook](https://user-images.githubusercontent.com/35431615/57325528-3e2e9d80-70d8-11e9-8e94-ed15eeede5be.png)
